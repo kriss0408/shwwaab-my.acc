@@ -9,33 +9,73 @@
     <title>Custom Printed Mugs | Your Mug Shop</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            font-family: Arial, sans-serif;
+            color: white;
         }
+        /* Solar System Background Animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #000428, #004e92);
+            overflow: hidden;
+            z-index: -1;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 300%;
+            height: 300%;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/9/9e/Solar_system.jpg') repeat;
+            animation: animateBackground 20s linear infinite;
+            z-index: -2;
+        }
+        @keyframes animateBackground {
+            from {
+                transform: translate(-10%, -10%) scale(1);
+            }
+            to {
+                transform: translate(-30%, -30%) scale(1.2);
+            }
+        }
+        /* Header Styles */
         header {
-            background-color: #f8f9fa;
-            padding: 20px;
+            background: linear-gradient(90deg, #ff512f, #dd2476);
             text-align: center;
+            padding: 20px;
+            font-size: 1.5em;
+            color: white;
+            font-family: 'Verdana', sans-serif;
         }
         header h1 {
+            font-size: 2.5em;
             margin: 0;
         }
+        header p {
+            font-size: 1.2em;
+        }
         nav {
-            background-color: #343a40;
-            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
             display: flex;
             justify-content: center;
-            padding: 10px 0;
+            padding: 10px;
         }
         nav a {
             color: white;
             margin: 0 15px;
             text-decoration: none;
+            font-weight: bold;
         }
         .main-section {
             padding: 20px;
         }
+        /* Add to Cart Section */
         .add-to-cart {
             display: flex;
             flex-direction: column;
@@ -68,22 +108,54 @@
         .add-to-cart button:hover {
             background-color: #0056b3;
         }
-        footer {
-            background-color: #343a40;
-            color: white;
+        /* Track My Order Section */
+        .track-order {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
             text-align: center;
-            padding: 10px;
-            margin-top: 20px;
+            margin: 20px auto;
+            max-width: 600px;
         }
+        .track-order input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            margin: 10px 0;
+        }
+        .track-order button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .track-order button:hover {
+            background-color: #218838;
+        }
+        .note {
+            font-size: 0.9em;
+            margin-top: 10px;
+            color: #ffc107;
+        }
+        /* Policy Section */
         .policy-section {
-            margin: 20px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
         }
         .policy-section h2 {
             margin-bottom: 10px;
         }
         .policy-section p {
             margin: 10px 0;
-            font-size: 14px;
+            font-size: 1em;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
         }
     </style>
     <script>
@@ -101,13 +173,12 @@
 <body>
     <header>
         <h1>Your Mug Shop</h1>
-        <p>High-quality custom printed mugs. Call us at +1(888) 562-8710 for assistance.</p>
+        <p>Custom Printed Mugs for Every Occasion</p>
     </header>
     <nav>
-        <a href="#preview">Preview Mug</a>
         <a href="#add-to-cart">Add to Cart</a>
-        <a href="#track">Track Order</a>
-        <a href="#contact">Contact Us</a>
+        <a href="#track-order">Track My Order</a>
+        <a href="#policy">Terms & Privacy</a>
     </nav>
     <div class="main-section">
         <section class="add-to-cart" id="add-to-cart">
@@ -119,20 +190,21 @@
             <p id="cartPreview" style="font-size: 20px; font-weight: bold; margin-top: 10px;">Your Name</p>
             <button>Add to Cart</button>
         </section>
-        <section class="order-tracking" id="track">
-            <h2>Track Your Order</h2>
-            <p>Enter your Order ID to track your order:</p>
+        <section class="track-order" id="track-order">
+            <h2>Track My Order</h2>
+            <p>Enter your Order ID below to track your order:</p>
             <input type="text" id="orderInput" placeholder="Enter your Order ID">
-            <button onclick="alert('Order tracking functionality coming soon!')">Track Order</button>
+            <button onclick="alert('Tracking functionality coming soon!')">Track Order</button>
+            <p class="note">Use the user ID and password sent to your phone number to track your order.</p>
+        </section>
+        <section class="policy-section" id="policy">
+            <h2>Terms & Conditions</h2>
+            <p>By using this website, you agree to our terms and conditions. All sales are final, and custom orders cannot be canceled once placed. For more details, contact us at +1(888) 562-8710.</p>
+            <h2>Privacy Policy</h2>
+            <p>Your privacy is important to us. We only collect information necessary to process your order. We do not share your data with third parties without consent.</p>
         </section>
     </div>
-    <div class="policy-section" id="policy">
-        <h2>Terms & Conditions</h2>
-        <p>By using this website, you agree to our terms and conditions. All sales are final, and custom orders cannot be canceled once placed. For more details, contact us at +1(888) 562-8710.</p>
-        <h2>Privacy Policy</h2>
-        <p>Your privacy is important to us. We only collect information necessary to process your order. We do not share your data with third parties without consent.</p>
-    </div>
-    <footer id="contact">
+    <footer>
         <p>For inquiries, call us at <strong>+1(888) 562-8710</strong></p>
         <p>© 2024 Your Mug Shop. All Rights Reserved.</p>
     </footer>
